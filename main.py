@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-
+from csv_module import Meta1
 
 class About(tk.Toplevel):
     def __init__(self, parent):
@@ -33,8 +33,24 @@ class StartWindow(tk.Tk):
         #Кнопка перехода во второе окно
         self.btn = tk.Button(self, text="Начать", command=self.open_window)
         self.btn.place(x=700, y=250, width=500, height=25)
+
+        #Вывод в поле
+        def insert_text():
+          #s = "print(Meta1.shape)"
+          self.text.insert(1.0, f'{Meta1}\n')
+
+        #Размер рамки
         self.text = tk.Text(width=232, height=30, bg="darkgreen", fg='white')
         self.text.place(x=20, y=500)
+        self.frame = tk.Frame()
+        self.frame.pack()
+        self.b = tk.Button(self, text="Вставить", command=insert_text)
+        self.b.place(x=700, y=300, width=500, height=25)
+
+
+
+
+
 
     def open_window(self):
         about = About(self)
