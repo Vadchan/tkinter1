@@ -38,7 +38,17 @@ class CSV():
             print('нет')
             z = input()
             if z == str('да'):
-                print('agnionwg')
+                q1 = input('Выберите какое минимальное значение будет по metascore: ')
+                q2 = input('Выберите максимальное значение: ')
+                sss = Meta1[(Meta1['metascore'] >= int(q1)) & (Meta1['metascore'] <= int(q2)) &
+                            (Meta1['genre_tags'] == str(rr))]
+                qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
+                                  'maturity_rating',  'user_reviews_count', 'developer'])
+                print(qq)
+
+
+
+
 
 
 
