@@ -66,6 +66,7 @@ class StartWindow(tk.Tk):
         root = tk.Tk()
         root.title("Второе окно")
         root.geometry("400x300")
+        #еще раз переписал, не загрузился комит на гит
         #Должен был быть текст
         '''
         text = tk.Text(width=20, height=7)
