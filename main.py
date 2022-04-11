@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
-from csv_module import Meta1
+from csv_module import Meta1, result
 
 class About(tk.Toplevel):
     def __init__(self, parent):
@@ -43,8 +43,9 @@ class StartWindow(tk.Tk):
         #Вывод в поле
         def insert_text():
           #s = "print(Meta1.shape)"
-          #self.text.insert(1.0, f'{Meta1}\n')
+          self.text.insert(1.0, f'{result}\n')
           self.text.insert(2.0, f'{var3.get()}')
+
 
 
         #Размер рамки
@@ -60,9 +61,18 @@ class StartWindow(tk.Tk):
 
 
 
+
     def open_window(self):
-        about = About(self)
-        about.grab_set()
+        root = tk.Tk()
+        root.title("Второе окно")
+        root.geometry("400x300")
+        #Должен был быть текст
+        '''
+        text = tk.Text(width=20, height=7)
+        text.pack()
+        '''
+        #root.mainloop()
+
     def print(self):
         pass
 
