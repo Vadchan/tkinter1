@@ -1,5 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
+import re
+
+import csv_module
 from csv_module import Meta1, result
 
 class About(tk.Toplevel):
@@ -63,15 +66,14 @@ class StartWindow(tk.Tk):
 
 
     def open_window(self):
+        self.destroy()
         root = tk.Tk()
         root.title("Второе окно")
         root.geometry("400x300")
-        #еще раз переписал, не загрузился комит на гит
-        #Должен был быть текст
-        '''
-        text = tk.Text(width=20, height=7)
+        #новое текстовое поле
+        text = tk.Text(width=400, height=240)
         text.pack()
-        '''
+        text.insert(3.0, csv_module.search())
         #root.mainloop()
 
     def print(self):

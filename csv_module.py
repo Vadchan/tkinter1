@@ -13,46 +13,37 @@ print('Все игры')
 print((Meta1['title']))
 print('^^Все игры^^')
 
-class CSV():
 
-    def search():
-        a = input('Введите название игры: ')
-        result = Meta1[(Meta1['title'] == str(a))]
-        print('Вся информация о вашей игре')
-        print(result)
-        print('Хотите воспользоваться нахождением максимально похожей игры?')
+def search():
+    a = input('Введите название игры: ')
+    result = Meta1[(Meta1['title'] == str(a))]
+    print('Вся информация о вашей игре')
+    print(result)
+    print('Хотите воспользоваться нахождением максимально похожей игры?')
+    print('да')
+    print('нет')
+    b = input()
+    w = result['genre_tags']
+    print(w)
+
+    if b == str('да'):
+        rr = input('введите жанр игры, что указан выше: ')
+        sss = Meta1[(Meta1['genre_tags'] == str(rr))]
+        ss = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
+                               'maturity_rating', 'metascore', 'user_reviews_count', 'developer'])
+        print(ss)
+        print('Желаете отсортировать игры по оценке metascore?')
         print('да')
         print('нет')
-        b = input()
-        w = result['genre_tags']
-        print(w)
-
-        if b == str('да'):
-            rr = input('введите жанр игры, что указан выше: ')
-            sss = Meta1[(Meta1['genre_tags'] == str(rr))]
-            ss= sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
-                                  'maturity_rating',  'metascore',  'user_reviews_count', 'developer'])
-            print(ss)
-            print('Желаете отсортировать игры по оценке metascore?')
-            print('да')
-            print('нет')
-            z = input()
-            if z == str('да'):
-                q1 = input('Выберите какое минимальное значение будет по metascore: ')
-                q2 = input('Выберите максимальное значение: ')
-                sss = Meta1[(Meta1['metascore'] >= int(q1)) & (Meta1['metascore'] <= int(q2)) &
-                            (Meta1['genre_tags'] == str(rr))]
-                qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
-                                  'maturity_rating',  'user_reviews_count', 'developer'])
-                print(qq)
-
-
-
-
-
-
-
-
+        z = input()
+        if z == str('да'):
+            q1 = input('Выберите какое минимальное значение будет по metascore: ')
+            q2 = input('Выберите максимальное значение: ')
+            sss = Meta1[(Meta1['metascore'] >= int(q1)) & (Meta1['metascore'] <= int(q2)) &
+                        (Meta1['genre_tags'] == str(rr))]
+            qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
+                                   'maturity_rating', 'user_reviews_count', 'developer'])
+            print(qq)
 
 
 # Сброс ограничений на количество выводимых рядов
