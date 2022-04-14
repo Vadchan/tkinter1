@@ -17,66 +17,77 @@ class About(tk.Toplevel):
         self.button.place(x=860, y=900, width=140, height=35)
 
 class StartWindow(tk.Tk):
+
+
     def __init__(self):
         super().__init__()
-        self.geometry('1920x1080')
+
+        self.geometry('680x750')
         #Заголовок
         self.label = tk.Label(text="Выборка", font=("Arial Bold", 25))
-        self.label.grid(column=0, row=0)
+        #self.label.place(x=40, y=100, width=650, height=30)
         #Поисковая сторка
-        #var3 = tk.StringVar()
-        self.txt = tk.Entry(width=30)
+        self.var3 = tk.StringVar()
+        self.lbl = tk.Label(self, text="Поисковая строка", font=("Arial Bold", 15))
+        self.lbl.place(x=20, y=175)
+        self.txt = tk.Entry(width=30, textvariable=self.var3)
+        #x = 20, y = 300
         #self.name = var3.get()
-        self.txt.place(x=200, y=200, width=700, height=35)
+        self.txt.place(x=20, y=200, width=650, height=30)
         self.txt.focus()
         self.label.pack(padx=20,pady=20)
         #Режимы сортировки
-        self.combo = ttk.Combobox()
-        self.combo['values'] = (1, 2, 3, 4, 5)
-        self.combo.current(1)  # установите вариант по умолчанию
-        self.combo.place(x=1700, y=200, width=50, height=35)
+        #self.combo = ttk.Combobox()
+        #self.combo['values'] = (1, 2, 3, 4, 5)
+        #self.combo.current(1)  # установите вариант по умолчанию
+        #self.combo.place(x=1700, y=200, width=50, height=35)
         #Кнопка перехода во второе окно
-        self.btn = tk.Button(self, text="Начать", command=self.open_window)
-        self.btn.place(x=700, y=250, width=500, height=25)
+        self.btn = tk.Button(self, text="Начать", bg="black", fg="red", command=self.open_window)
+        self.btn.place(x=60, y=240, width=500, height=25)
+
+
+
+
+        #Вывод в поле
+        def insert_text():
+          #s = "print(Meta1.shape)"
+          self.text.insert(1.0, '=-----------------------------------------------------------------------------=\n')
+          vr = Meta1[(Meta1['title'] == str(self.txt.get()))]
+          self.text.insert(1.0, f'{vr}\n')
+          info = 'Вся информация о игре: '
+          self.text.insert(1.0, f'{info}\n')
+          self.text.insert(1.0, '=-----------------------------------------------------------------------------=\n')
+          #self.text.insert(2.0, f'{self.var3.get()}')
+
 
         #Размер рамки
-        self.text = tk.Text(width=232, height=30, bg="darkgreen", fg='white')
+        self.text = tk.Text(width=80, height=27, bg="blue", fg='white')
         self.text.place(x=20, y=300)
         self.frame = tk.Frame()
         self.frame.pack()
-        self.b = tk.Button(self, text="Вставить", command=self.insert_text)
-        self.b.place(x=700, y=300, width=500, height=25)
-        self.c = tk.Button(self, text="Поиск", command=self.search)
-        self.c.place(x=800, y=300, width=500, height=25)
+        self.b = tk.Button(self, text="Вставить", bg="black", fg="red", command=insert_text)
+        self.b.place(x=60, y=272, width=500, height=25)
 
-    def get_game_name(self): self.txt.get()
 
-    def search(self): self.text.insert(1.0, csv_module.search(self.get_game_name()))
 
-    #Вывод в поле
-    def insert_text(self):
-      #s = "print(Meta1.shape)"
-      res = "Игра: {}".format(self.get_game_name())
-      self.text.insert(1.0, res)
-      #self.text.insert(1.0, f'{result}\n')
-      #self.text.insert(2.0, f'{var3.get()}')
+
+
+
+
 
     def open_window(self):
         self.destroy()
         root = tk.Tk()
         root.title("Второе окно")
         root.geometry("400x300")
-        root.txt = tk.Entry(root, width=40)
-        root.txt.place(x=200, y=200)
-        #root.btn = tk.Button(self, text="Клик!", command=csv_module.search())
-        #root.btn.place(x=900, y=600)
         #новое текстовое поле
-
-        sv = str(csv_module.search())
-        text = tk.Text(width=30, height=10)
+        text = tk.Text(width=400, height=240)
         text.pack()
-        #text.insert(2.0, f'{sv.get()}')
-        text.insert(tk.END, sv)
+        text.insert(1.0, '00000000000000000000000000000000000000000\n')
+
+        text.insert(3.0, csv_module.search(self.var3.get()))
+
+
         #root.mainloop()
 
     def print(self):
