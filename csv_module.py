@@ -44,6 +44,8 @@ def search():
             qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
                                    'maturity_rating', 'user_reviews_count', 'developer'])
             print(qq)
+        if z == str('нет'):
+            print('Выход...')
     else:
 
         print('Выход...')
