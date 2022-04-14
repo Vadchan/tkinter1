@@ -73,7 +73,7 @@ class StartWindow(tk.Tk):
         #новое текстовое поле
         text = tk.Text(width=400, height=240)
         text.pack()
-        text.insert(3.0, csv_module.search())
+        text.insert(3.0, result)
         #root.mainloop()
 
     def print(self):
