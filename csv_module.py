@@ -22,9 +22,9 @@ def search():
     print('Хотите воспользоваться нахождением максимально похожей игры?')
     print('да')
     print('нет')
-    b = input()
     w = result['genre_tags']
     print(w)
+    b = input()
 
     if b == str('да'):
         rr = input('введите жанр игры, что указан выше: ')
@@ -44,7 +44,9 @@ def search():
             qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
                                    'maturity_rating', 'user_reviews_count', 'developer'])
             print(qq)
+    else:
 
+        print('Выход...')
 
 # Сброс ограничений на количество выводимых рядов
 pd.set_option('display.max_rows', 7)
@@ -89,4 +91,4 @@ label.pack()
 root.mainloop()
 '''
 if __name__ == "__main__":
-    CSV.search()
+    search()
