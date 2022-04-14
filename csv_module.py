@@ -14,8 +14,7 @@ print((Meta1['title']))
 print('^^Все игры^^')
 
 
-def search():
-    a = input('Введите название игры: ')
+def search(a):
     result = Meta1[(Meta1['title'] == str(a))]
     print('Вся информация о вашей игре')
     print(result)
@@ -24,8 +23,8 @@ def search():
     print('нет')
     w = result['genre_tags']
     print(w)
-    b = input()
-
+    b = 'нет'
+    qq1 = qq2 = qq3 =''
     if b == str('да'):
         rr = input('введите жанр игры, что указан выше: ')
         sss = Meta1[(Meta1['genre_tags'] == str(rr))]
@@ -35,7 +34,7 @@ def search():
         print('Желаете отсортировать игры по оценке metascore?')
         print('да')
         print('нет')
-        z = input()
+        z = 'нет'
         if z == str('да'):
             q1 = input('Выберите какое минимальное значение будет по metascore: ')
             q2 = input('Выберите максимальное значение: ')
@@ -47,8 +46,8 @@ def search():
         if z == str('нет'):
             print('Выход...')
     else:
-
         print('Выход...')
+    return f'{qq1}:{qq2} -- {qq3}'
 
 # Сброс ограничений на количество выводимых рядов
 pd.set_option('display.max_rows', 7)

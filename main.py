@@ -17,8 +17,6 @@ class About(tk.Toplevel):
         self.button.place(x=860, y=900, width=140, height=35)
 
 class StartWindow(tk.Tk):
-
-
     def __init__(self):
         super().__init__()
         self.geometry('1920x1080')
@@ -26,8 +24,8 @@ class StartWindow(tk.Tk):
         self.label = tk.Label(text="Выборка", font=("Arial Bold", 25))
         self.label.grid(column=0, row=0)
         #Поисковая сторка
-        var3 = tk.StringVar()
-        self.txt = tk.Entry(width=30, textvariable=var3)
+        #var3 = tk.StringVar()
+        self.txt = tk.Entry(width=30)
         #self.name = var3.get()
         self.txt.place(x=200, y=200, width=700, height=35)
         self.txt.focus()
@@ -41,39 +39,44 @@ class StartWindow(tk.Tk):
         self.btn = tk.Button(self, text="Начать", command=self.open_window)
         self.btn.place(x=700, y=250, width=500, height=25)
 
-
-
-        #Вывод в поле
-        def insert_text():
-          #s = "print(Meta1.shape)"
-          self.text.insert(1.0, f'{result}\n')
-          self.text.insert(2.0, f'{var3.get()}')
-
-
-
         #Размер рамки
         self.text = tk.Text(width=232, height=30, bg="darkgreen", fg='white')
         self.text.place(x=20, y=300)
         self.frame = tk.Frame()
         self.frame.pack()
-        self.b = tk.Button(self, text="Вставить", command=insert_text)
+        self.b = tk.Button(self, text="Вставить", command=self.insert_text)
         self.b.place(x=700, y=300, width=500, height=25)
+        self.c = tk.Button(self, text="Поиск", command=self.search)
+        self.c.place(x=800, y=300, width=500, height=25)
 
+    def get_game_name(self): self.txt.get()
 
+    def search(self): self.text.insert(1.0, csv_module.search(self.get_game_name()))
 
-
-
-
+    #Вывод в поле
+    def insert_text(self):
+      #s = "print(Meta1.shape)"
+      res = "Игра: {}".format(self.get_game_name())
+      self.text.insert(1.0, res)
+      #self.text.insert(1.0, f'{result}\n')
+      #self.text.insert(2.0, f'{var3.get()}')
 
     def open_window(self):
         self.destroy()
         root = tk.Tk()
         root.title("Второе окно")
         root.geometry("400x300")
+        root.txt = tk.Entry(root, width=40)
+        root.txt.place(x=200, y=200)
+        #root.btn = tk.Button(self, text="Клик!", command=csv_module.search())
+        #root.btn.place(x=900, y=600)
         #новое текстовое поле
-        text = tk.Text(width=400, height=240)
+
+        sv = str(csv_module.search())
+        text = tk.Text(width=30, height=10)
         text.pack()
-        text.insert(3.0, result)
+        #text.insert(2.0, f'{sv.get()}')
+        text.insert(tk.END, sv)
         #root.mainloop()
 
     def print(self):
