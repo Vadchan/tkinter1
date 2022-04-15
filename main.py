@@ -65,7 +65,7 @@ class StartWindow(tk.Tk):
         self.text.place(x=20, y=300)
         self.frame = tk.Frame()
         self.frame.pack()
-        self.b = tk.Button(self, text="Вставить", bg="black", fg="red", command=insert_text)
+        self.b = tk.Button(self, text="Вся информация о игре", bg="black", fg="red", command=insert_text)
         self.b.place(x=60, y=272, width=500, height=25)
 
 
@@ -81,7 +81,7 @@ class StartWindow(tk.Tk):
         root.title("Второе окно")
         root.geometry("400x300")
         #новое текстовое поле
-        text = tk.Text(width=400, height=240)
+        text = tk.Text(width=40, height=20)
         text.pack()
         text.insert(1.0, '00000000000000000000000000000000000000000\n')
 
