@@ -5,23 +5,11 @@ import re
 import csv_module
 from csv_module import Meta1, result
 
-class About(tk.Toplevel):
-    def __init__(self, parent):
-        super().__init__(parent)
-        self.geometry('1920x1080')
-        self.label = tk.Label(self, text="Выборка по игре", font=("Arial Bold", 25))
-        self.button = tk.Button(self, text="Новый поиск", command=self.destroy)
-        #Расположение текста
-        self.label.place(x=840, y=30)
-        #Расположение конопки возврата на первый экран
-        self.button.place(x=860, y=900, width=140, height=35)
-
 class StartWindow(tk.Tk):
 
 
     def __init__(self):
         super().__init__()
-
         self.geometry('680x750')
         #Заголовок
         self.label = tk.Label(text="Выборка", font=("Arial Bold", 25))
@@ -50,7 +38,7 @@ class StartWindow(tk.Tk):
 
         #Вывод в поле
         def insert_text():
-          #s = "print(Meta1.shape)"
+
           self.text.insert(1.0, '=-----------------------------------------------------------------------------=\n')
           vr = Meta1[(Meta1['title'] == str(self.txt.get()))]
           self.text.insert(1.0, f'{vr}\n')
@@ -73,15 +61,20 @@ class StartWindow(tk.Tk):
         self.destroy()
         root = tk.Tk()
         root.title("Второе окно")
-        root.geometry("400x300")
+        root.geometry("950x700")
         #новое текстовое поле
-        text = tk.Text(width=40, height=20)
+        text = tk.Text(width=113, height=60, bg="blue", fg='white')
         text.pack()
-        text.insert(1.0, '00000000000000000000000000000000000000000\n')
-
-        text.insert(2.0, f'{self.var3.get()}\n')
+        text.insert(1.0, f"Искал по игре: {self.var3.get()}\n")
+        text.insert(2.0, 'Максимально похожие игры по metacritic:\n')
 
         text.insert(3.0, csv_module.nahod(self.var3.get()))
+
+        esc = tk.Button(root, text="Начальный экран", bg="black", fg="red", command=lambda:[root.destroy(), StartWindow()])
+        esc.place(x=60, y=240, width=500, height=25)
+
+
+
 
 
         #root.mainloop()
