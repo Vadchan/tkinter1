@@ -69,12 +69,6 @@ class StartWindow(tk.Tk):
         self.b.place(x=60, y=272, width=500, height=25)
 
 
-
-
-
-
-
-
     def open_window(self):
         self.destroy()
         root = tk.Tk()
@@ -85,7 +79,9 @@ class StartWindow(tk.Tk):
         text.pack()
         text.insert(1.0, '00000000000000000000000000000000000000000\n')
 
-        text.insert(3.0, csv_module.search(self.var3.get()))
+        text.insert(2.0, f'{self.var3.get()}\n')
+
+        text.insert(3.0, csv_module.nahod(self.var3.get()))
 
 
         #root.mainloop()
