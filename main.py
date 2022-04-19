@@ -76,23 +76,29 @@ class StartWindow(tk.Tk):
     def window3(self):
         self.destroy()
         zoom = tk.Tk()
-        zoom.title("Второе окно")
-        zoom.geometry("950x700")
+        zoom.title("Третье окно")
+        zoom.geometry("1300x500")
+        zoom.lbl = tk.Label(zoom, text="Первое значение: ", font=("Arial Bold", 10))
+        zoom.lbl.place(x=20, y=10)
+        zoom.lbl = tk.Label(zoom, text="Второе значение: ", font=("Arial Bold", 10))
+        zoom.lbl.place(x=20, y=40)
+        zoom.lbl = tk.Label(zoom, text="Жанр игры: ", font=("Arial Bold", 10))
+        zoom.lbl.place(x=20, y=70)
         #Первое значение
         zoom.combo1 = ttk.Combobox()
         zoom.combo1['values'] = (
-        1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
+        0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30,
         31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58,
         59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86,
         87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100)
 
         zoom.combo1.current(0)  # установите вариант по умолчанию
-        zoom.combo1.place(x=100, y=200, width=50, height=35)
+        zoom.combo1.place(x=130, y=10, width=40, height=25)
 
         #Второе значение
         zoom.combo2 = ttk.Combobox()
         zoom.combo2['values'] = (
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
+            0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29,
             30,
             31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57,
             58,
@@ -100,8 +106,9 @@ class StartWindow(tk.Tk):
             86,
             87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100)
 
-        zoom.combo2.current(0)  # установите вариант по умолчанию
-        zoom.combo2.place(x=200, y=200, width=50, height=35)
+        zoom.combo2.current(80)  # установите вариант по умолчанию
+        zoom.combo2.place(x=130, y=40, width=40, height=25)
+
 
         zoom.combo3 = ttk.Combobox()
         zoom.combo3['values'] = ('Real-Time Strategy','Action RPG', 'Sim', 'Arcade', 'Modern Jet',
@@ -125,9 +132,9 @@ class StartWindow(tk.Tk):
  'Massively Multiplayer', 'Console-style RPG')
 
         zoom.combo3.current(0)  # установите вариант по умолчанию
-        zoom.combo3.place(x=100, y=300, width=200, height=35)
+        zoom.combo3.place(x=93, y=70, width=150, height=25)
 
-        text = tk.Text(width=43, height=40, bg="blue", fg='white')
+        text = tk.Text(width=100, height=30, bg="blue", fg='white')
         text.pack()
         text.insert(1.0, f"Первое значение: {zoom.combo1.get()}\n")
         text.insert(2.0, f'Второе значение:{zoom.combo2.get()}\n')
@@ -143,7 +150,7 @@ class StartWindow(tk.Tk):
 
         def callbackFunc3(event):
             text.insert(3.0, f"Жанр: {zoom.combo3.get()}\n")
-            text.insert(3.0, csv_module.zom1(zoom.combo1.get(), zoom.combo2.get(), zoom.combo3.get()))
+            text.insert(4.0, csv_module.zom1(zoom.combo1.get(), zoom.combo2.get(), zoom.combo3.get()))
         zoom.combo3.bind("<<ComboboxSelected>>", callbackFunc3)
 
         esc = tk.Button(zoom, text="Начальный экран", bg="black", fg="red",
