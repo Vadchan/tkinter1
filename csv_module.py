@@ -16,12 +16,19 @@ print('^^Все игры^^')
 print(pd.unique(Meta1['genre_tags']))
 
 def zom1(a1,a2,b):
+    if a1>a2:
+        s='Второе значение не может быть меньше первого!\n'
+        return s
     sss = Meta1[(Meta1['metascore'] >= int(a1)) & (Meta1['metascore'] <= int(a2)) &
                 (Meta1['genre_tags'] == str(b))]
     qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
-                           'maturity_rating', 'user_reviews_count', 'developer'])
+                           'maturity_rating', 'user_reviews_count'])
 
-    return f"906798698: {qq}"
+    pd.set_option('display.max_rows', None)
+    # вывод без \n
+    pd.options.display.expand_frame_repr = False
+
+    return f'{qq}'
 
 
 
