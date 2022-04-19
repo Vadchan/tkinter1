@@ -103,6 +103,30 @@ class StartWindow(tk.Tk):
         zoom.combo2.current(0)  # установите вариант по умолчанию
         zoom.combo2.place(x=200, y=200, width=50, height=35)
 
+        zoom.combo3 = ttk.Combobox()
+        zoom.combo3['values'] = ('Real-Time Strategy','Action RPG', 'Sim', 'Arcade', 'Modern Jet',
+ 'Other Shooters', 'Historic', 'Turn-Based Strategy', 'Sci-Fi', 'Puzzle',
+ 'Adventure Games', '3D', 'General', '2D', 'Modern', 'Platformers',
+ 'Miscellaneous', 'Fantasy', 'Other Strategy Games', 'Role-Playing',
+ 'Formula One', 'GT / Street', 'Stock Car', 'Street', 'Racing',
+ 'Rally / Offroad', 'Motocross', 'Kart', 'Futuristic', 'Small Spaceship',
+ 'Futuristic Combat Sims', 'Large Spaceship', 'Futuristic Jet', 'WWII',
+ 'Combat Sims', 'Tank', 'Ship', 'Civilian Plane', 'Train', 'Submarine', 'Tycoon',
+ 'First-Person Shooters', 'Tactical Shooters', 'Action', 'Wrestling',
+ "Beat-'Em-Up", 'Scrolling', 'Rail', 'Static', 'Light Gun', 'Shooter',
+ 'First-Person', 'MOBA', 'Compilation', 'Fighting Games', 'Music',
+ 'Simulations', 'Helicopter', 'Military', 'WWI', 'Old Jet', 'Fighting',
+ 'Action Adventure', 'Interactive Movie', 'Horror', 'Tennis', 'Soccer',
+ 'Management', 'Other Sports Games', 'Baseball', 'Basketball', 'Surfing',
+ 'Alternative Sports', 'Olympic Sports', 'Snowboarding', 'Golf', 'Other',
+ 'Skateboarding', 'Biking', 'Billiards', 'Volleyball', 'Hunting', 'Rugby',
+ 'Football', 'Bowling', 'Hockey', 'Truck', 'On-foot', 'Virtual Life',
+ 'Futuristic Sub', 'Mech', 'Breeding/Constructing', 'PC-style RPG',
+ 'Massively Multiplayer', 'Console-style RPG')
+
+        zoom.combo3.current(0)  # установите вариант по умолчанию
+        zoom.combo3.place(x=100, y=300, width=200, height=35)
+
         text = tk.Text(width=43, height=40, bg="blue", fg='white')
         text.pack()
         text.insert(1.0, f"Первое значение: {zoom.combo1.get()}\n")
@@ -114,10 +138,17 @@ class StartWindow(tk.Tk):
         zoom.combo1.bind("<<ComboboxSelected>>", callbackFunc1)
 
         def callbackFunc2(event):
-            text.insert(2.0, f"Первое значение: {zoom.combo2.get()}\n")
+            text.insert(2.0, f"Второе значение: {zoom.combo2.get()}\n")
         zoom.combo2.bind("<<ComboboxSelected>>", callbackFunc2)
 
+        def callbackFunc3(event):
+            text.insert(3.0, f"Жанр: {zoom.combo3.get()}\n")
+            text.insert(3.0, csv_module.zom1(zoom.combo1.get(), zoom.combo2.get(), zoom.combo3.get()))
+        zoom.combo3.bind("<<ComboboxSelected>>", callbackFunc3)
 
+        esc = tk.Button(zoom, text="Начальный экран", bg="black", fg="red",
+                        command=lambda: [zoom.destroy(), StartWindow()])
+        esc.place(x=20, y=660, width=910, height=35)
 
 
         #root.mainloop()
