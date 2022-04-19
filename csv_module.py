@@ -20,192 +20,195 @@ def nahod(a):
     w = str(result['genre_tags'])
     if re.search(r'\bAction RPG\b', w):
         w = 'Action RPG'
-    if re.search(r'\bReal-Time Strategy\b', w):
+    elif re.search(r'\bReal-Time Strategy\b', w):
         w = 'Real-Time Strategy'
-    if re.search(r'\bSim\b', w):
+    elif re.search(r'\bSim\b', w):
         w = 'Sim'
-    if re.search(r'\bArcade\b', w):
+    elif re.search(r'\bArcade\b', w):
         w = 'Arcade'
-    if re.search(r'\bModern Jet\b', w):
+    elif re.search(r'\bModern Jet\b', w):
         w = 'Modern Jet'
-    if re.search(r'\bOther Shooters\b', w):
+    elif re.search(r'\bOther Shooters\b', w):
         w = 'Other Shooters'
-    if re.search(r'\bHistoric\b', w):
+    elif re.search(r'\bHistoric\b', w):
         w = 'Historic'
-    if re.search(r'\bTurn-Based Strategy\b', w):
+    elif re.search(r'\bTurn-Based Strategy\b', w):
         w = 'Turn-Based Strategy'
-    if re.search(r'\bSci-Fi\b', w):
+    elif re.search(r'\bSci-Fi\b', w):
         w = 'Sci-Fi'
-    if re.search(r'\bPuzzle\b', w):
+    elif re.search(r'\bPuzzle\b', w):
         w = 'Puzzle'
-    if re.search(r'\bAdventure Games\b', w):
+    elif re.search(r'\bAdventure Games\b', w):
         w = 'Adventure Games'
-    if re.search(r'\b3D\b', w):
+    elif re.search(r'\b3D\b', w):
         w = '3D'
-    if re.search(r'\bGeneral\b', w):
+    elif re.search(r'\bGeneral\b', w):
         w = 'General'
-    if re.search(r'\b2D\b', w):
+    elif re.search(r'\b2D\b', w):
         w = '2D'
-    if re.search(r'\bModern\b', w):
+    elif re.search(r'\bModern\b', w):
         w = 'Modern'
-    if re.search(r'\bPlatformers\b', w):
+    elif re.search(r'\bPlatformers\b', w):
         w = 'Platformers'
-    if re.search(r'\bMiscellaneous\b', w):
+    elif re.search(r'\bMiscellaneous\b', w):
         w = 'Miscellaneous'
-    if re.search(r'\bFantasy\b', w):
+    elif re.search(r'\bFantasy\b', w):
         w = 'Fantasy'
-    if re.search(r'\bOther Strategy Games\b', w):
+    elif re.search(r'\bOther Strategy Games\b', w):
         w = 'Other Strategy Games'
-    if re.search(r'\bRole-Playing\b', w):
+    elif re.search(r'\bRole-Playing\b', w):
         w = 'Role-Playing'
-    if re.search(r'\bFormula One\b', w):
+    elif re.search(r'\bFormula One\b', w):
         w = 'Formula One'
-    if re.search(r'\bGT / Street\b', w):
+    elif re.search(r'\bGT / Street\b', w):
         w = 'GT / Street'
-    if re.search(r'\bStock Car\b', w):
+    elif re.search(r'\bStock Car\b', w):
         w = 'Stock Car'
-    if re.search(r'\bStreet\b', w):
+    elif re.search(r'\bStreet\b', w):
         w = 'Street'
-    if re.search(r'\bRacing\b', w):
+    elif re.search(r'\bRacing\b', w):
         w = 'Racing'
-    if re.search(r'\bRally / Offroad\b', w):
+    elif re.search(r'\bRally / Offroad\b', w):
         w = 'Rally / Offroad'
-    if re.search(r'\bMotocross\b', w):
+    elif re.search(r'\bMotocross\b', w):
         w = 'Motocross'
-    if re.search(r'\bKart\b', w):
+    elif re.search(r'\bKart\b', w):
         w = 'Kart'
-    if re.search(r'\bFuturistic\b', w):
+    elif re.search(r'\bFuturistic\b', w):
         w = 'Futuristic'
-    if re.search(r'\bSmall Spaceship\b', w):
+    elif re.search(r'\bSmall Spaceship\b', w):
         w = 'Small Spaceship'
-    if re.search(r'\bFuturistic Combat Sims\b', w):
+    elif re.search(r'\bFuturistic Combat Sims\b', w):
         w = 'Futuristic Combat Sims'
-    if re.search(r'\bLarge Spaceship\b', w):
+    elif re.search(r'\bLarge Spaceship\b', w):
         w = 'Large Spaceship'
-    if re.search(r'\bFuturistic Jet\b', w):
+    elif re.search(r'\bFuturistic Jet\b', w):
         w = 'Futuristic Jet'
-    if re.search(r'\bWWII\b', w):
+    elif re.search(r'\bWWII\b', w):
         w = 'WWII'
-    if re.search(r'\bCombat Sims\b', w):
+    elif re.search(r'\bCombat Sims\b', w):
         w = 'Combat Sims'
-    if re.search(r'\bTank\b', w):
+    elif re.search(r'\bTank\b', w):
         w = 'Tank'
-    if re.search(r'\bShip\b', w):
+    elif re.search(r'\bShip\b', w):
         w = 'Ship'
-    if re.search(r'\bCivilian Plane\b', w):
+    elif re.search(r'\bCivilian Plane\b', w):
         w = 'Civilian Plane'
-    if re.search(r'\bTrain\b', w):
+    elif re.search(r'\bTrain\b', w):
         w = 'Train'
-    if re.search(r'\bSubmarine\b', w):
+    elif re.search(r'\bSubmarine\b', w):
         w = 'Submarine'
-    if re.search(r'\bTycoon\b', w):
+    elif re.search(r'\bTycoon\b', w):
         w = 'Tycoon'
-    if re.search(r'\bFirst-Person Shooters\b', w):
+    elif re.search(r'\bFirst-Person Shooters\b', w):
         w = 'First-Person Shooters'
-    if re.search(r'\bTactical Shooters\b', w):
+    elif re.search(r'\bTactical Shooters\b', w):
         w = 'Tactical Shooters'
-    if re.search(r'\bAction\b', w):
+    elif re.search(r'\bAction\b', w):
         w = 'Action'
-    if re.search(r'\bWrestling\b', w):
+    elif re.search(r'\bWrestling\b', w):
         w = 'Wrestling'
-    if re.search(r'\bScrolling\b', w):
+    elif re.search(r'\bScrolling\b', w):
         w = 'Scrolling'
-    if re.search(r'\bRail\b', w):
+    elif re.search(r'\bRail\b', w):
         w = 'Rail'
-    if re.search(r'\bStatic\b', w):
+    elif re.search(r'\bStatic\b', w):
         w = 'Static'
-    if re.search(r'\bLight Gun\b', w):
+    elif re.search(r'\bLight Gun\b', w):
         w = 'Light Gun'
-    if re.search(r'\bShooter\b', w):
+    elif re.search(r'\bShooter\b', w):
         w = 'Shooter'
-    if re.search(r'\bFirst-Person\b', w):
+    elif re.search(r'\bFirst-Person\b', w):
         w = 'First-Person'
-    if re.search(r'\bMOBA\b', w):
+    elif re.search(r'\bMOBA\b', w):
         w = 'MOBA'
-    if re.search(r'\bCompilation\b', w):
+    elif re.search(r'\bCompilation\b', w):
         w = 'Compilation'
-    if re.search(r'\bFighting Games\b', w):
+    elif re.search(r'\bFighting Games\b', w):
         w = 'Fighting Games'
-    if re.search(r'\bMusic\b', w):
+    elif re.search(r'\bMusic\b', w):
         w = 'Music'
-    if re.search(r'\bSimulations\b', w):
+    elif re.search(r'\bSimulations\b', w):
         w = 'Simulations'
-    if re.search(r'\bHelicopter\b', w):
+    elif re.search(r'\bHelicopter\b', w):
         w = 'Helicopter'
-    if re.search(r'\bMilitary\b', w):
+    elif re.search(r'\bMilitary\b', w):
         w = 'Military'
-    if re.search(r'\bWWI\b', w):
+    elif re.search(r'\bWWI\b', w):
         w = 'WWI'
-    if re.search(r'\bOld Jet\b', w):
+    elif re.search(r'\bOld Jet\b', w):
         w = 'Old Jet'
-    if re.search(r'\bFighting\b', w):
+    elif re.search(r'\bFighting\b', w):
         w = 'Fighting'
-    if re.search(r'\bAction Adventure\b', w):
+    elif re.search(r'\bAction Adventure\b', w):
         w = 'Action Adventure'
-    if re.search(r'\bInteractive Movie\b', w):
+    elif re.search(r'\bInteractive Movie\b', w):
         w = 'Interactive Movie'
-    if re.search(r'\bHorror\b', w):
+    elif re.search(r'\bHorror\b', w):
         w = 'Horror'
-    if re.search(r'\bTennis\b', w):
+    elif re.search(r'\bTennis\b', w):
         w = 'Tennis'
-    if re.search(r'\bSoccer\b', w):
+    elif re.search(r'\bSoccer\b', w):
         w = 'Soccer'
-    if re.search(r'\bManagement\b', w):
+    elif re.search(r'\bManagement\b', w):
         w = 'Management'
-    if re.search(r'\bOther Sports Games\b', w):
+    elif re.search(r'\bOther Sports Games\b', w):
         w = 'Other Sports Games'
-    if re.search(r'\bBaseball\b', w):
+    elif re.search(r'\bBaseball\b', w):
         w = 'Baseball'
-    if re.search(r'\bBasketball\b', w):
+    elif re.search(r'\bBasketball\b', w):
         w = 'Basketball'
-    if re.search(r'\bSurfing\b', w):
+    elif re.search(r'\bSurfing\b', w):
         w = 'Surfing'
-    if re.search(r'\bAlternative Sports\b', w):
+    elif re.search(r'\bAlternative Sports\b', w):
         w = 'Alternative Sports'
-    if re.search(r'\bOlympic Sports\b', w):
+    elif re.search(r'\bOlympic Sports\b', w):
         w = 'Olympic Sports'
-    if re.search(r'\bSnowboarding\b', w):
+    elif re.search(r'\bSnowboarding\b', w):
         w = 'Snowboarding'
-    if re.search(r'\bGolf\b', w):
+    elif re.search(r'\bGolf\b', w):
         w = 'Golf'
-    if re.search(r'\bOther\b', w):
+    elif re.search(r'\bOther\b', w):
         w = 'Other'
-    if re.search(r'\bSkateboarding\b', w):
+    elif re.search(r'\bSkateboarding\b', w):
         w = 'Skateboarding'
-    if re.search(r'\bBiking\b', w):
+    elif re.search(r'\bBiking\b', w):
         w = 'Biking'
-    if re.search(r'\bBilliards\b', w):
+    elif re.search(r'\bBilliards\b', w):
         w = 'Billiards'
-    if re.search(r'\bVolleyball\b', w):
+    elif re.search(r'\bVolleyball\b', w):
         w = 'Volleyball'
-    if re.search(r'\bHunting\b', w):
+    elif re.search(r'\bHunting\b', w):
         w = 'Hunting'
-    if re.search(r'\bRugby\b', w):
+    elif re.search(r'\bRugby\b', w):
         w = 'Rugby'
-    if re.search(r'\bFootball\b', w):
+    elif re.search(r'\bFootball\b', w):
         w = 'Football'
-    if re.search(r'\bBowling\b', w):
+    elif re.search(r'\bBowling\b', w):
         w = 'Bowling'
-    if re.search(r'\bHockey\b', w):
+    elif re.search(r'\bHockey\b', w):
         w = 'Hockey'
-    if re.search(r'\bTruck\b', w):
+    elif re.search(r'\bTruck\b', w):
         w = 'Truck'
-    if re.search(r'\bOn-foot\b', w):
+    elif re.search(r'\bOn-foot\b', w):
         w = 'On-foot'
-    if re.search(r'\bVirtual Life\b', w):
+    elif re.search(r'\bVirtual Life\b', w):
         w = 'Virtual Life'
-    if re.search(r'\bFuturistic Sub\b', w):
+    elif re.search(r'\bFuturistic Sub\b', w):
         w = 'Futuristic Sub'
-    if re.search(r'\bMech\b', w):
+    elif re.search(r'\bMech\b', w):
         w = 'Mech'
-    if re.search(r'\bBreeding/Constructing\b', w):
+    elif re.search(r'\bBreeding/Constructing\b', w):
         w = 'Breeding/Constructing'
-    if re.search(r'\bPC-style RPG\b', w):
+    elif re.search(r'\bPC-style RPG\b', w):
         w = 'PC-style RPG'
-    if re.search(r'\bMassively Multiplayer\b', w):
+    elif re.search(r'\bMassively Multiplayer\b', w):
         w = 'Massively Multiplayer'
-    if re.search(r'\bConsole-style RPG\b', w):
+    elif re.search(r'\bConsole-style RPG\b', w):
         w = 'Console-style RPG'
+    else:
+        s1 = 'Такой игры нет в таблице metacritic'
+        return s1
 
     ss = Meta1[(Meta1['genre_tags'] == str(w))]
     s1 = ss.drop(columns=['user_score', 'publisher', 'critics_reviews_count',
