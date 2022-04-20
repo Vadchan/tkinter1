@@ -15,15 +15,17 @@ print('Все игры')
 print('^^Все игры^^')
 print(pd.unique(Meta1['genre_tags']))
 
-def zom1(a1,a2,b):
-    if a1>a2:
-        s='Второе значение не может быть меньше первого!\n'
+def zom1(a1, a2, b):
+    if a1 > a2:
+        s = 'Второе значение не может быть меньше первого!\n'
         return s
     sss = Meta1[(Meta1['metascore'] >= int(a1)) & (Meta1['metascore'] <= int(a2)) &
                 (Meta1['genre_tags'] == str(b))]
     qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
                            'maturity_rating', 'user_reviews_count'])
-
+    if re.search(r'\bEmpty\b', str(qq)):
+        s = 'Игры с такими оценками нет в таблице metacritic'
+        return s
     pd.set_option('display.max_rows', None)
     # вывод без \n
     pd.options.display.expand_frame_repr = False
@@ -233,50 +235,9 @@ def nahod(a):
     pd.set_option('display.max_rows', None)
     #вывод без \n
     pd.options.display.expand_frame_repr = False
-
     return s1
 
 
-
-def search(a):
-    #a = input('Введите название игры: ')
-    result = Meta1[(Meta1['title'] == str(a))]
-    #print('Вся информация о вашей игре')
-    #print(result)
-    #print('Хотите воспользоваться нахождением максимально похожей игры?')
-    #print('да')
-    #print('нет')
-    w = result['genre_tags']
-    #print(w)
-    b = 'да'
-
-    if b == str('да'):
-        #rr = input('введите жанр игры, что указан выше: ')
-        if Meta1[(Meta1['genre_tags'] == 'RPG')]:
-            ss = Meta1.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
-                               'maturity_rating', 'metascore', 'user_reviews_count', 'developer'])
-            print(ss)
-        '''    
-        print('Желаете отсортировать игры по оценке metascore?')
-        print('да')
-        print('нет')
-        z = 'нет'
-        if z == str('да'):
-            q1 = input('Выберите какое минимальное значение будет по metascore: ')
-            q2 = input('Выберите максимальное значение: ')
-            sss = Meta1[(Meta1['metascore'] >= int(q1)) & (Meta1['metascore'] <= int(q2)) &
-                        (Meta1['genre_tags'] == str(rr))]
-            qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
-                                   'maturity_rating', 'user_reviews_count', 'developer'])
-            print(qq)
-        if z == str('нет'):
-            print('Выход...')
-    else:
-
-        print('Выход...')
-    #return print('dsnopb')
-       '''
-    return {result['genre_tags']}
 # Сброс ограничений на количество выводимых рядов
 pd.set_option('display.max_rows', 7)
 
@@ -286,12 +247,3 @@ pd.set_option('display.max_columns', None)
 # Сброс ограничений на количество символов в записи
 pd.set_option('display.max_colwidth', None)
 
-
-result = Meta1[(Meta1['title'] == 'Diablo')]
-#print(result)
-
-
-'''
-if __name__ == "__main__":
-    search()
-'''
