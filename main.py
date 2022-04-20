@@ -1,9 +1,8 @@
 import tkinter as tk
 from tkinter import ttk
-import re
 
 import csv_module
-from csv_module import Meta1, result
+from csv_module import Meta1
 
 class StartWindow(tk.Tk):
 
@@ -11,17 +10,18 @@ class StartWindow(tk.Tk):
     def __init__(self):
         super().__init__()
         self.geometry('680x750')
+        self.configure(bg='#856ff8')
 
         #Заголовок
-        self.label = tk.Label(text="Выборка", font=("Arial Bold", 25))
+        self.label = tk.Label(text="Выборка", background="#856ff8", font=("Arial Bold", 25))
         #self.label.place(x=40, y=100, width=650, height=30)
 
         #Поисковая сторка
         self.var3 = tk.StringVar()
-        self.lbl = tk.Label(self, text="Поисковая строка", font=("Arial Bold", 15))
-        self.lbl.place(x=20, y=175)
+        self.lbl = tk.Label(self, text="Поисковая строка",background='#856ff8', font=("Arial Bold", 15))
+        self.lbl.place(x=20, y=90)
         self.txt = tk.Entry(width=30, textvariable=self.var3)
-        self.txt.place(x=20, y=200, width=650, height=30)
+        self.txt.place(x=20, y=117, width=650, height=30)
         self.txt.focus()
         self.label.pack(padx=20,pady=20)
 
@@ -30,8 +30,8 @@ class StartWindow(tk.Tk):
         self.btn.place(x=60, y=240, width=500, height=25)
 
         #Кнопка нового окна
-        self.btn = tk.Button(self, text="Лично", bg="black", fg="red", command=self.window3)
-        self.btn.place(x=60, y=100, width=500, height=25)
+        self.btn = tk.Button(self, text="Пользователь", bg="black", fg="red", command=self.window3)
+        self.btn.place(x=60, y=208, width=500, height=25)
 
 
 
@@ -49,7 +49,7 @@ class StartWindow(tk.Tk):
 
 
         #Размер рамки
-        self.text = tk.Text(width=80, height=27, bg="blue", fg='white')
+        self.text = tk.Text(width=80, height=27, bg="#4169E1", fg='white')
         self.text.place(x=20, y=300)
         self.frame = tk.Frame()
         self.frame.pack()
@@ -62,8 +62,9 @@ class StartWindow(tk.Tk):
         root = tk.Tk()
         root.title("Второе окно")
         root.geometry("950x700")
+        root.configure(bg='#856ff8')
         #новое текстовое поле
-        text = tk.Text(width=113, height=40, bg="blue", fg='white')
+        text = tk.Text(width=113, height=40, bg="#4169E1", fg='white')
         text.pack()
         text.insert(1.0, f"Искал по игре: {self.var3.get()}\n")
         text.insert(2.0, 'Максимально похожие игры по metacritic:\n')
@@ -78,11 +79,12 @@ class StartWindow(tk.Tk):
         zoom = tk.Tk()
         zoom.title("Третье окно")
         zoom.geometry("1300x500")
-        zoom.lbl = tk.Label(zoom, text="Первое значение: ", font=("Arial Bold", 10))
+        zoom.configure(bg='#856ff8')
+        zoom.lbl = tk.Label(zoom, text="Первое значение: ",background="#856ff8", font=("Arial Bold", 10))
         zoom.lbl.place(x=20, y=10)
-        zoom.lbl = tk.Label(zoom, text="Второе значение: ", font=("Arial Bold", 10))
+        zoom.lbl = tk.Label(zoom, text="Второе значение: ",background="#856ff8", font=("Arial Bold", 10))
         zoom.lbl.place(x=20, y=40)
-        zoom.lbl = tk.Label(zoom, text="Жанр игры: ", font=("Arial Bold", 10))
+        zoom.lbl = tk.Label(zoom, text="Жанр игры: ",background="#856ff8", font=("Arial Bold", 10))
         zoom.lbl.place(x=20, y=70)
         #Первое значение
         zoom.combo1 = ttk.Combobox()
@@ -112,29 +114,30 @@ class StartWindow(tk.Tk):
 
         zoom.combo3 = ttk.Combobox()
         zoom.combo3['values'] = ('Real-Time Strategy','Action RPG', 'Sim', 'Arcade', 'Modern Jet',
- 'Other Shooters', 'Historic', 'Turn-Based Strategy', 'Sci-Fi', 'Puzzle',
- 'Adventure Games', '3D', 'General', '2D', 'Modern', 'Platformers',
- 'Miscellaneous', 'Fantasy', 'Other Strategy Games', 'Role-Playing',
- 'Formula One', 'GT / Street', 'Stock Car', 'Street', 'Racing',
- 'Rally / Offroad', 'Motocross', 'Kart', 'Futuristic', 'Small Spaceship',
- 'Futuristic Combat Sims', 'Large Spaceship', 'Futuristic Jet', 'WWII',
- 'Combat Sims', 'Tank', 'Ship', 'Civilian Plane', 'Train', 'Submarine', 'Tycoon',
- 'First-Person Shooters', 'Tactical Shooters', 'Action', 'Wrestling',
- "Beat-'Em-Up", 'Scrolling', 'Rail', 'Static', 'Light Gun', 'Shooter',
- 'First-Person', 'MOBA', 'Compilation', 'Fighting Games', 'Music',
- 'Simulations', 'Helicopter', 'Military', 'WWI', 'Old Jet', 'Fighting',
- 'Action Adventure', 'Interactive Movie', 'Horror', 'Tennis', 'Soccer',
- 'Management', 'Other Sports Games', 'Baseball', 'Basketball', 'Surfing',
- 'Alternative Sports', 'Olympic Sports', 'Snowboarding', 'Golf', 'Other',
- 'Skateboarding', 'Biking', 'Billiards', 'Volleyball', 'Hunting', 'Rugby',
- 'Football', 'Bowling', 'Hockey', 'Truck', 'On-foot', 'Virtual Life',
- 'Futuristic Sub', 'Mech', 'Breeding/Constructing', 'PC-style RPG',
- 'Massively Multiplayer', 'Console-style RPG')
+        'Other Shooters', 'Historic', 'Turn-Based Strategy', 'Sci-Fi', 'Puzzle',
+        'Adventure Games', '3D', 'General', '2D', 'Modern', 'Platformers',
+        'Miscellaneous', 'Fantasy', 'Other Strategy Games', 'Role-Playing',
+        'Formula One', 'GT / Street', 'Stock Car', 'Street', 'Racing',
+        'Rally / Offroad', 'Motocross', 'Kart', 'Futuristic', 'Small Spaceship',
+        'Futuristic Combat Sims', 'Large Spaceship', 'Futuristic Jet', 'WWII',
+        'Combat Sims', 'Tank', 'Ship', 'Civilian Plane', 'Train', 'Submarine', 'Tycoon',
+        'First-Person Shooters', 'Tactical Shooters', 'Action', 'Wrestling',
+        "Beat-'Em-Up", 'Scrolling', 'Rail', 'Static', 'Light Gun', 'Shooter',
+        'First-Person', 'MOBA', 'Compilation', 'Fighting Games', 'Music',
+        'Simulations', 'Helicopter', 'Military', 'WWI', 'Old Jet', 'Fighting',
+        'Action Adventure', 'Interactive Movie', 'Horror', 'Tennis', 'Soccer',
+        'Management', 'Other Sports Games', 'Baseball', 'Basketball', 'Surfing',
+        'Alternative Sports', 'Olympic Sports', 'Snowboarding', 'Golf', 'Other',
+        'Skateboarding', 'Biking', 'Billiards', 'Volleyball', 'Hunting', 'Rugby',
+        'Football', 'Bowling', 'Hockey', 'Truck', 'On-foot', 'Virtual Life',
+        'Futuristic Sub', 'Mech', 'Breeding/Constructing', 'PC-style RPG',
+        'Massively Multiplayer', 'Console-style RPG')
+
 
         zoom.combo3.current(0)  # установите вариант по умолчанию
         zoom.combo3.place(x=93, y=70, width=150, height=25)
 
-        text = tk.Text(width=100, height=30, bg="blue", fg='white')
+        text = tk.Text(width=100, height=30,  bg="#4169E1", fg='white')
         text.pack()
         text.insert(1.0, f"Первое значение: {zoom.combo1.get()}\n")
         text.insert(2.0, f'Второе значение:{zoom.combo2.get()}\n')
@@ -155,7 +158,7 @@ class StartWindow(tk.Tk):
 
         esc = tk.Button(zoom, text="Начальный экран", bg="black", fg="red",
                         command=lambda: [zoom.destroy(), StartWindow()])
-        esc.place(x=20, y=660, width=910, height=35)
+        esc.place(x=20, y=100, width=160, height=35)
 
 
         #root.mainloop()
