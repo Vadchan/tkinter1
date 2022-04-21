@@ -9,6 +9,7 @@ class StartWindow(tk.Tk):
 
     def __init__(self):
         super().__init__()
+        #Размер и цвет окна
         self.geometry('680x750')
         self.configure(bg='#856ff8')
 
@@ -18,21 +19,24 @@ class StartWindow(tk.Tk):
 
         #Поисковая сторка
         self.var3 = tk.StringVar()
-        self.lbl = tk.Label(self, text="Поисковая строка",background='#856ff8', font=("Arial Bold", 15))
+        self.lbl = tk.Label(self, text="Поисковая строка", background='#856ff8', font=("Arial Bold", 15))
         self.lbl.place(x=20, y=90)
         self.txt = tk.Entry(width=30, textvariable=self.var3)
         self.txt.place(x=20, y=117, width=650, height=30)
         self.txt.focus()
-        self.label.pack(padx=20,pady=20)
+        self.label.pack(padx=20, pady=20)
 
         #Кнопка перехода во второе окно
         self.btn = tk.Button(self, text="Начать", bg="black", fg="red", command=self.open_window)
-        self.btn.place(x=60, y=240, width=500, height=25)
+        self.btn.place(x=60, y=240, width=550, height=25)
 
-        #Кнопка нового окна
+        #Кнопка перехода в третье окно
         self.btn = tk.Button(self, text="Пользователь", bg="black", fg="red", command=self.window3)
-        self.btn.place(x=60, y=208, width=500, height=25)
+        self.btn.place(x=60, y=208, width=550, height=25)
 
+        # Кнопка перехода в четвёртое окно
+        self.btn = tk.Button(self, text="Вся информация о таблице", bg="black", fg="red", command=self.information)
+        self.btn.place(x=60, y=178, width=550, height=25)
 
 
 
@@ -48,22 +52,26 @@ class StartWindow(tk.Tk):
           #self.text.insert(2.0, f'{self.var3.get()}')
 
 
-        #Размер рамки
+        #Размер и цвет текстового поля
         self.text = tk.Text(width=80, height=27, bg="#4169E1", fg='white')
         self.text.place(x=20, y=300)
         self.frame = tk.Frame()
         self.frame.pack()
+
+        #Кнопка записи в тестовое поле
         self.b = tk.Button(self, text="Вся информация о игре", bg="black", fg="red", command=insert_text)
-        self.b.place(x=60, y=272, width=500, height=25)
+        self.b.place(x=60, y=272, width=550, height=25)
 
 
     def open_window(self):
+        #Зарываем предыдущее окно
         self.destroy()
+        #Создание нового окна
         root = tk.Tk()
         root.title("Второе окно")
         root.geometry("950x700")
         root.configure(bg='#856ff8')
-        #новое текстовое поле
+        #Новое текстовое поле
         text = tk.Text(width=113, height=40, bg="#4169E1", fg='white')
         text.pack()
         text.insert(1.0, f"Искал по игре: {self.var3.get()}\n")
@@ -74,8 +82,28 @@ class StartWindow(tk.Tk):
         esc = tk.Button(root, text="Начальный экран", bg="black", fg="red", command=lambda:[root.destroy(), StartWindow()])
         esc.place(x=20, y=660, width=910, height=35)
 
-    def window3(self):
+    def information(self):
+        # Зарываем предыдущее окно
         self.destroy()
+        # Создание нового окна
+        inf = tk.Tk()
+        inf.title("Четвёртое окно")
+        inf.geometry("680x750")
+        inf.configure(bg='#856ff8')
+        #Новое текстовое поле
+        text = tk.Text(width=80, height=43, bg="#4169E1", fg='white')
+        text.pack()
+
+        text.insert(3.0, csv_module.infor())
+
+        esc = tk.Button(inf, text="Начальный экран", bg="black", fg="red",
+                        command=lambda: [inf.destroy(), StartWindow()])
+        esc.place(x=10, y=710, width=655, height=35)
+
+    def window3(self):
+        # Зарываем предыдущее окно
+        self.destroy()
+        # Создание нового окна
         zoom = tk.Tk()
         zoom.title("Третье окно")
         zoom.geometry("1300x500")
@@ -111,7 +139,7 @@ class StartWindow(tk.Tk):
         zoom.combo2.current(80)  # установите вариант по умолчанию
         zoom.combo2.place(x=130, y=40, width=40, height=25)
 
-
+        #Жанр игр
         zoom.combo3 = ttk.Combobox()
         zoom.combo3['values'] = ('Real-Time Strategy','Action RPG', 'Sim', 'Arcade', 'Modern Jet',
         'Other Shooters', 'Historic', 'Turn-Based Strategy', 'Sci-Fi', 'Puzzle',
