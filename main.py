@@ -13,7 +13,7 @@ class StartWindow(tk.Tk):
         self.configure(bg='#856ff8')
 
         #Заголовок
-        self.label = tk.Label(text="Выборка", background="#856ff8", font=("Arial Bold", 25))
+        self.label = tk.Label(text="Выборка по metacritic", background="#856ff8", font=("Arial Bold", 25))
         #self.label.place(x=40, y=100, width=650, height=30)
 
         #Поисковая сторка
