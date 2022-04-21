@@ -1,5 +1,5 @@
 import  matplotlip as plt
-#import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import pandas as pd
 import re
 
@@ -10,10 +10,7 @@ Meta1 = Meta1.drop(columns=['link', 'genre', 'platform'])
 #print('Атрибуты ИГРЫ')
 
 pd.set_option('display.max_rows', None)
-print('Все игры')
-#print((Meta1['genre_tags']))
-print('^^Все игры^^')
-print(pd.unique(Meta1['genre_tags']))
+
 
 def zom1(a1, a2, b):
     if a1 > a2:
@@ -32,6 +29,32 @@ def zom1(a1, a2, b):
 
     return f'{qq}'
 
+def infor():
+    s0 = ('Разброс значений, средняя оценка и медиана')
+    s1 = Meta1.describe()
+    s2 = ('Название колонок')
+    s3 = (Meta1.columns)
+    s4 = ('Размеры таблицы')
+    s5 = (Meta1.shape)
+    s6 = ('Атрибуты файла')
+    s7 = (Meta1.head())
+    s8 = ('Повторяющиеся данные')
+    s9 = (Meta1["title"].value_counts().head())
+    s10 = (Meta1['genre_tags'].value_counts().head())
+    s11 = ('Максимальное значение в metascore:')
+    s12 = (Meta1['metascore'][Meta1.index.min()])
+    s13 = ('Минимальное значение в metascore:')
+    s14 = (Meta1['metascore'][Meta1.index.max()])
+    s15 = ('Сумма metascore:')
+    s16 = (Meta1['metascore'].sum())
+
+    # вывод без \n
+    pd.set_option('display.max_rows', None)
+
+    return f'{s0}\n{s1}\n\n{s2}\n{s3}\n\n{s4}\n' \
+           f'{s5}\n\n{s6}\n{s7}\n\n{s8}\n' \
+           f'{s9}\n{s10}\n\n{s11}\n{s12}\n\n' \
+           f'{s13}\n{s14}\n{s15}\n\n{s16}\n'
 
 
 def nahod(a):
