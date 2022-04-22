@@ -28,7 +28,7 @@ class StartWindow(tk.Tk):
 
         #Кнопка перехода во второе окно
         self.btn = tk.Button(self, text="Начать", bg="black", fg="red", command=self.open_window)
-        self.btn.place(x=60, y=240, width=550, height=25)
+        self.btn.place(x=60, y=178, width=550, height=25)
 
         #Кнопка перехода в третье окно
         self.btn = tk.Button(self, text="Пользователь", bg="black", fg="red", command=self.window3)
@@ -36,7 +36,7 @@ class StartWindow(tk.Tk):
 
         # Кнопка перехода в четвёртое окно
         self.btn = tk.Button(self, text="Вся информация о таблице", bg="black", fg="red", command=self.information)
-        self.btn.place(x=60, y=178, width=550, height=25)
+        self.btn.place(x=60, y=272, width=550, height=25)
 
 
 
@@ -60,7 +60,7 @@ class StartWindow(tk.Tk):
 
         #Кнопка записи в тестовое поле
         self.b = tk.Button(self, text="Вся информация о игре", bg="black", fg="red", command=insert_text)
-        self.b.place(x=60, y=272, width=550, height=25)
+        self.b.place(x=60, y=240, width=550, height=25)
 
 
     def open_window(self):
