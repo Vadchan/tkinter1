@@ -12,6 +12,24 @@ Meta1 = Meta1.drop(columns=['link', 'genre', 'platform'])
 pd.set_option('display.max_rows', None)
 
 
+def son1(a1, a2, b):
+    if a1 > a2:
+        s = 'Второе значение не может быть меньше первого!\n'
+        return s
+    sss = Meta1[(Meta1['user_score'] >= int(a1)) & (Meta1['user_score'] <= int(a2)) &
+                (Meta1['genre_tags'] == str(b))]
+    qq = sss.drop(columns=['metascore', 'publisher', 'critics_reviews_count', 'release_date',
+                           'maturity_rating', 'user_reviews_count'])
+    if re.search(r'\bEmpty\b', str(qq)):
+        s = 'Игры с такими оценками нет в таблице metacritic'
+        return s
+    pd.set_option('display.max_rows', None)
+    # вывод без \n
+    pd.options.display.expand_frame_repr = False
+
+    return f'{qq}'
+
+
 def zom1(a1, a2, b):
     if a1 > a2:
         s = 'Второе значение не может быть меньше первого!\n'
