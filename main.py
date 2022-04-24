@@ -27,11 +27,11 @@ class StartWindow(tk.Tk):
         self.label.pack(padx=20, pady=20)
 
         #Кнопка перехода во второе окно
-        self.btn = tk.Button(self, text="Начать", bg="black", fg="red", command=self.open_window)
+        self.btn = tk.Button(self, text="Начать", bg="black", fg="red", command=self.win2)
         self.btn.place(x=60, y=184, width=550, height=20)
 
         #Кнопка перехода в третье окно
-        self.btn = tk.Button(self, text="Пользователь по metascore", bg="black", fg="red", command=self.window3)
+        self.btn = tk.Button(self, text="Пользователь по metascore", bg="black", fg="red", command=self.win3)
         self.btn.place(x=60, y=228, width=550, height=20)
 
         # Кнопка перехода в четвёртое окно
@@ -162,7 +162,7 @@ class StartWindow(tk.Tk):
         esc.place(x=20, y=100, width=160, height=35)
 
 
-    def open_window(self):
+    def win2(self):
         #Зарываем предыдущее окно
         self.destroy()
         #Создание нового окна
@@ -199,7 +199,7 @@ class StartWindow(tk.Tk):
                         command=lambda: [inf.destroy(), StartWindow()])
         esc.place(x=10, y=710, width=655, height=35)
 
-    def window3(self):
+    def win3(self):
         # Зарываем предыдущее окно
         self.destroy()
         # Создание нового окна
@@ -286,12 +286,6 @@ class StartWindow(tk.Tk):
         esc = tk.Button(zoom, text="Начальный экран", bg="black", fg="red",
                         command=lambda: [zoom.destroy(), StartWindow()])
         esc.place(x=20, y=100, width=160, height=35)
-
-
-        #root.mainloop()
-
-    def print(self):
-        pass
 
 
 if __name__ == "__main__":
