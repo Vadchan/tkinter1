@@ -12,13 +12,13 @@ Meta1 = Meta1.drop(columns=['link', 'genre', 'platform'])
 pd.set_option('display.max_rows', None)
 
 
-def son1(a1, a2, b):
+def son1(a1, a2, b, sort):
     if a1 > a2:
         s = 'Второе значение не может быть меньше первого!\n'
         return s
     sss = Meta1[(Meta1['user_score'] >= int(a1)) & (Meta1['user_score'] <= int(a2)) &
                 (Meta1['genre_tags'] == str(b))]
-    qq = sss.drop(columns=['metascore', 'publisher', 'critics_reviews_count', 'release_date',
+    qq = sss.drop(columns=['metascore', 'publisher', 'critics_reviews_count', 'developer',
                            'maturity_rating', 'user_reviews_count'])
     if re.search(r'\bEmpty\b', str(qq)):
         s = 'Игры с такими оценками нет в таблице metacritic'
@@ -26,17 +26,29 @@ def son1(a1, a2, b):
     pd.set_option('display.max_rows', None)
     # вывод без \n
     pd.options.display.expand_frame_repr = False
+    # сортировка
+    if re.search(r'\bпо убыванию\b', str(sort)):
+        s4 = qq.sort_values(by=['user_score'], ascending=False)
+    elif re.search(r'\bпо возрастанию\b', str(sort)):
+        s4 = qq.sort_values(by=['user_score'])
+    elif re.search(r'\bпо title A-Z\b', str(sort)):
+        s4 = qq.sort_values(by=['title'])
+    elif re.search(r'\bпо title Z-A\b', str(sort)):
+        s4 = qq.sort_values(by=['title'], ascending=False)
+    elif re.search(r'\bпо дате возрастания\b', str(sort)):
+        s4 = qq.sort_values(by=['release_date'])
+    elif re.search(r'\bпо дате убывания\b', str(sort)):
+        s4 = qq.sort_values(by=['release_date'], ascending=False)
+    return f'{s4}'
 
-    return f'{qq}'
 
-
-def zom1(a1, a2, b):
+def zom1(a1, a2, b, sort):
     if a1 > a2:
         s = 'Второе значение не может быть меньше первого!\n'
         return s
     sss = Meta1[(Meta1['metascore'] >= int(a1)) & (Meta1['metascore'] <= int(a2)) &
                 (Meta1['genre_tags'] == str(b))]
-    qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'release_date',
+    qq = sss.drop(columns=['user_score', 'publisher', 'critics_reviews_count', 'developer',
                            'maturity_rating', 'user_reviews_count'])
     if re.search(r'\bEmpty\b', str(qq)):
         s = 'Игры с такими оценками нет в таблице metacritic'
@@ -45,7 +57,22 @@ def zom1(a1, a2, b):
     # вывод без \n
     pd.options.display.expand_frame_repr = False
 
-    return f'{qq}'
+    # сортировка
+    if re.search(r'\bпо убыванию\b', str(sort)):
+        s4 = qq.sort_values(by=['metascore'], ascending=False)
+    elif re.search(r'\bпо возрастанию\b', str(sort)):
+        s4 = qq.sort_values(by=['metascore'])
+    elif re.search(r'\bпо title A-Z\b', str(sort)):
+        s4 = qq.sort_values(by=['title'])
+    elif re.search(r'\bпо title Z-A\b', str(sort)):
+        s4 = qq.sort_values(by=['title'], ascending=False)
+    elif re.search(r'\bпо дате возрастания\b', str(sort)):
+        s4 = qq.sort_values(by=['release_date'])
+    elif re.search(r'\bпо дате убывания\b', str(sort)):
+        s4 = qq.sort_values(by=['release_date'], ascending=False)
+    return f'{s4}'
+
+    return f'{s4}'
 
 def infor():
     s0 = ('Разброс значений, средняя оценка и медиана')
@@ -75,7 +102,7 @@ def infor():
            f'{s13}\n{s14}\n{s15}\n\n{s16}\n'
 
 
-def nahod(a):
+def nahod(a, sort):
     result = Meta1[(Meta1['title'] == str(a))]
     w = str(result['genre_tags'])
     if re.search(r'\bAction RPG\b', w):
@@ -276,7 +303,19 @@ def nahod(a):
     pd.set_option('display.max_rows', None)
     #вывод без \n
     pd.options.display.expand_frame_repr = False
-    return s1
+    if re.search(r'\bпо убыванию\b', str(sort)):
+        s4 = s1.sort_values(by=['metascore'], ascending=False)
+    elif re.search(r'\bпо возрастанию\b', str(sort)):
+        s4 = s1.sort_values(by=['metascore'])
+    elif re.search(r'\bпо title A-Z\b', str(sort)):
+        s4 = s1.sort_values(by=['title'])
+    elif re.search(r'\bпо title Z-A\b', str(sort)):
+        s4 = s1.sort_values(by=['title'], ascending=False)
+    elif re.search(r'\bпо дате возрастания\b', str(sort)):
+        s4 = s1.sort_values(by=['release_date'])
+    elif re.search(r'\bпо дате убывания\b', str(sort)):
+        s4 = s1.sort_values(by=['release_date'], ascending=False)
+    return s4
 
 
 # Сброс ограничений на количество выводимых рядов
