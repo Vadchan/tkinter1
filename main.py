@@ -43,7 +43,6 @@ class StartWindow(tk.Tk):
         self.btn.place(x=60, y=206, width=550, height=20)
 
 
-
         #Вывод в поле
         def insert_text():
 
@@ -72,15 +71,17 @@ class StartWindow(tk.Tk):
         self.destroy()
         # Создание нового окна
         soon = tk.Tk()
-        soon.title("Третье окно")
-        soon.geometry("1300x500")
+        soon.title("11111111111111111111")
+        soon.geometry("1920x500")
         soon.configure(bg='#856ff8')
         soon.lbl = tk.Label(soon, text="Первое значение: ", background="#856ff8", font=("Arial Bold", 10))
         soon.lbl.place(x=20, y=10)
         soon.lbl = tk.Label(soon, text="Второе значение: ", background="#856ff8", font=("Arial Bold", 10))
         soon.lbl.place(x=20, y=40)
-        soon.lbl = tk.Label(soon, text="Жанр игры: ", background="#856ff8", font=("Arial Bold", 10))
+        soon.lbl = tk.Label(soon, text="Сортировать: ", background="#856ff8", font=("Arial Bold", 10))
         soon.lbl.place(x=20, y=70)
+        soon.lbl = tk.Label(soon, text="Жанр игры: ", background="#856ff8", font=("Arial Bold", 10))
+        soon.lbl.place(x=20, y=100)
         # Первое значение
         soon.combo1 = ttk.Combobox()
         soon.combo1['values'] = (
@@ -112,16 +113,16 @@ class StartWindow(tk.Tk):
 
         # Жанр игр
         soon.combo3 = ttk.Combobox()
-        soon.combo3['values'] = ('Real-Time Strategy', 'Action RPG', 'Sim', 'Arcade', 'Modern Jet',
+        soon.combo3['values'] = ('Action RPG', 'Sim', 'Arcade', 'Modern Jet',
                                  'Other Shooters', 'Historic', 'Turn-Based Strategy', 'Sci-Fi', 'Puzzle',
                                  'Adventure Games', '3D', 'General', '2D', 'Modern', 'Platformers',
                                  'Miscellaneous', 'Fantasy', 'Other Strategy Games', 'Role-Playing',
                                  'Formula One', 'GT / Street', 'Stock Car', 'Street', 'Racing',
                                  'Rally / Offroad', 'Motocross', 'Kart', 'Futuristic', 'Small Spaceship',
                                  'Futuristic Combat Sims', 'Large Spaceship', 'Futuristic Jet', 'WWII',
-                                 'Combat Sims', 'Tank', 'Ship', 'Civilian Plane', 'Train', 'Submarine', 'Tycoon',
-                                 'First-Person Shooters', 'Tactical Shooters', 'Action', 'Wrestling',
-                                 "Beat-'Em-Up", 'Scrolling', 'Rail', 'Static', 'Light Gun', 'Shooter',
+                                 'Combat Sims', 'Tank', 'Ship', 'Civilian Plane','Real-Time Strategy', 'Train',
+                                 'Submarine', 'Tycoon','First-Person Shooters', 'Tactical Shooters', 'Action',
+                                 'Wrestling', "Beat-'Em-Up", 'Scrolling', 'Rail', 'Static', 'Light Gun', 'Shooter',
                                  'First-Person', 'MOBA', 'Compilation', 'Fighting Games', 'Music',
                                  'Simulations', 'Helicopter', 'Military', 'WWI', 'Old Jet', 'Fighting',
                                  'Action Adventure', 'Interactive Movie', 'Horror', 'Tennis', 'Soccer',
@@ -133,33 +134,52 @@ class StartWindow(tk.Tk):
                                  'Massively Multiplayer', 'Console-style RPG')
 
         soon.combo3.current(0)  # установите вариант по умолчанию
-        soon.combo3.place(x=93, y=70, width=150, height=25)
+        soon.combo3.place(x=93, y=100, width=150, height=25)
 
-        text = tk.Text(width=100, height=30, bg="#4169E1", fg='white')
+        soon.combo4 = ttk.Combobox()
+        soon.combo4['values'] = ('по возрастанию', 'по убыванию', 'по title A-Z', 'по title Z-A', 'по дате возрастания', 'по дате убывания')
+
+        soon.combo4.current(0)  # установите вариант по умолчанию
+        soon.combo4.place(x=107, y=70, width=135, height=25)
+
+        text = tk.Text(width=130, height=30, bg="#4169E1", fg='white')
         text.pack()
+        '''
         text.insert(1.0, f"Первое значение: {soon.combo1.get()}\n")
         text.insert(2.0, f'Второе значение:{soon.combo2.get()}\n')
-
+        '''
+        #первое значение
         def callbackFunc1(event):
-            text.delete("1.0", "end")
-            text.insert(1.0, f"Первое значение: {soon.combo1.get()}\n")
+            #text.delete("1.0", "end")
+            text.insert(2.0, f"Первое значение: {soon.combo1.get()}\n")
 
         soon.combo1.bind("<<ComboboxSelected>>", callbackFunc1)
 
+        #второе значение
         def callbackFunc2(event):
-            text.insert(2.0, f"Второе значение: {soon.combo2.get()}\n")
+            text.insert(3.0, f"Второе значение: {soon.combo2.get()}\n")
 
         soon.combo2.bind("<<ComboboxSelected>>", callbackFunc2)
 
+        #сортировка
+        def callbackFunc4(event):
+            text.delete("1.0", "end\n")
+            text.insert(1.0, f"Сортировка: {soon.combo4.get()}\n")
+            text.insert(6.0, csv_module.son1(soon.combo1.get(), soon.combo2.get(), soon.combo3.get(), soon.combo4.get()))
+
+        soon.combo4.bind("<<ComboboxSelected>>", callbackFunc4)
+
+        #жанр
         def callbackFunc3(event):
-            text.insert(3.0, f"Жанр: {soon.combo3.get()}\n")
-            text.insert(4.0, csv_module.son1(soon.combo1.get(), soon.combo2.get(), soon.combo3.get()))
+            text.insert(4.0, f"Жанр: {soon.combo3.get()}\n")
+            #text.insert(6.0, csv_module.son1(soon.combo1.get(), soon.combo2.get(), soon.combo3.get(), soon.combo4.get()))
 
         soon.combo3.bind("<<ComboboxSelected>>", callbackFunc3)
 
+        #закрытие окна
         esc = tk.Button(soon, text="Начальный экран", bg="black", fg="red",
                         command=lambda: [soon.destroy(), StartWindow()])
-        esc.place(x=20, y=100, width=160, height=35)
+        esc.place(x=20, y=200, width=160, height=35)
 
 
     def win2(self):
@@ -167,8 +187,8 @@ class StartWindow(tk.Tk):
         self.destroy()
         #Создание нового окна
         root = tk.Tk()
-        root.title("Второе окно")
-        root.geometry("950x700")
+        root.title("Поиск")
+        root.geometry("950x750")
         root.configure(bg='#856ff8')
         #Новое текстовое поле
         text = tk.Text(width=113, height=40, bg="#4169E1", fg='white')
@@ -176,10 +196,27 @@ class StartWindow(tk.Tk):
         text.insert(1.0, f"Искал по игре: {self.var3.get()}\n")
         text.insert(2.0, 'Максимально похожие игры по metacritic:\n')
 
-        text.insert(3.0, csv_module.nahod(self.var3.get()))
+        root.combo4 = ttk.Combobox()
+        root.combo4['values'] = ('по убыванию' , 'по возрастанию', 'по title A-Z', 'по title Z-A',
+                                 'по дате возрастания', 'по дате убывания')
+
+        root.combo4.current(0)  # установите вариант по умолчанию
+        root.combo4.place(x=20, y=660, width=200, height=30)
+
+        text.insert(3.0, csv_module.nahod(self.var3.get(), 'по убыванию'))
+
+        # сортировка
+        def callbackFunc4(event):
+            text.delete("1.0", "end\n")
+            text.insert(1.0, f"Сортировка: {root.combo4.get()}\n")
+            text.insert(6.0, csv_module.nahod(self.var3.get(), root.combo4.get()))
+
+        root.combo4.bind("<<ComboboxSelected>>", callbackFunc4)
+
+        #text.insert(3.0, csv_module.nahod(self.var3.get(), 'по убыванию'))
 
         esc = tk.Button(root, text="Начальный экран", bg="black", fg="red", command=lambda:[root.destroy(), StartWindow()])
-        esc.place(x=20, y=660, width=910, height=35)
+        esc.place(x=20, y=710, width=910, height=35)
 
     def information(self):
         # Зарываем предыдущее окно
@@ -204,15 +241,17 @@ class StartWindow(tk.Tk):
         self.destroy()
         # Создание нового окна
         zoom = tk.Tk()
-        zoom.title("Третье окно")
-        zoom.geometry("1300x500")
+        zoom.title("META")
+        zoom.geometry("1920x500")
         zoom.configure(bg='#856ff8')
         zoom.lbl = tk.Label(zoom, text="Первое значение: ",background="#856ff8", font=("Arial Bold", 10))
         zoom.lbl.place(x=20, y=10)
         zoom.lbl = tk.Label(zoom, text="Второе значение: ",background="#856ff8", font=("Arial Bold", 10))
         zoom.lbl.place(x=20, y=40)
-        zoom.lbl = tk.Label(zoom, text="Жанр игры: ",background="#856ff8", font=("Arial Bold", 10))
+        zoom.lbl = tk.Label(zoom, text="Сортировать по: ", background="#856ff8", font=("Arial Bold", 10))
         zoom.lbl.place(x=20, y=70)
+        zoom.lbl = tk.Label(zoom, text="Жанр игры: ",background="#856ff8", font=("Arial Bold", 10))
+        zoom.lbl.place(x=20, y=100)
         #Первое значение
         zoom.combo1 = ttk.Combobox()
         zoom.combo1['values'] = (
@@ -262,30 +301,55 @@ class StartWindow(tk.Tk):
 
 
         zoom.combo3.current(0)  # установите вариант по умолчанию
-        zoom.combo3.place(x=93, y=70, width=150, height=25)
+        zoom.combo3.place(x=93, y=100, width=150, height=25)
 
-        text = tk.Text(width=100, height=30,  bg="#4169E1", fg='white')
+        zoom.combo4 = ttk.Combobox()
+        zoom.combo4['values'] = ('по возрастанию', 'по убыванию', 'по title A-Z', 'по title Z-A', 'по дате возрастания',
+                                 'по дате убывания')
+
+        zoom.combo4.current(0)  # установите вариант по умолчанию
+        zoom.combo4.place(x=120, y=70, width=123, height=25)
+
+        text = tk.Text(width=130, height=30,  bg="#4169E1", fg='white')
         text.pack()
+        '''
         text.insert(1.0, f"Первое значение: {zoom.combo1.get()}\n")
         text.insert(2.0, f'Второе значение:{zoom.combo2.get()}\n')
+        '''
 
+        # первое значение
         def callbackFunc1(event):
-            text.delete("1.0", "end")
-            text.insert(1.0, f"Первое значение: {zoom.combo1.get()}\n")
+            # text.delete("1.0", "end")
+            text.insert(2.0, f"Первое значение: {zoom.combo1.get()}\n")
+
         zoom.combo1.bind("<<ComboboxSelected>>", callbackFunc1)
 
+        # второе значение
         def callbackFunc2(event):
-            text.insert(2.0, f"Второе значение: {zoom.combo2.get()}\n")
+            text.insert(3.0, f"Второе значение: {zoom.combo2.get()}\n")
+
         zoom.combo2.bind("<<ComboboxSelected>>", callbackFunc2)
 
+        # сортировка
+        def callbackFunc4(event):
+            text.delete("1.0", "end\n")
+            text.insert(1.0, f"Сортировка: {zoom.combo4.get()}\n")
+            text.insert(6.0,
+                        csv_module.zom1(zoom.combo1.get(), zoom.combo2.get(), zoom.combo3.get(), zoom.combo4.get()))
+
+        zoom.combo4.bind("<<ComboboxSelected>>", callbackFunc4)
+
+        # жанр
         def callbackFunc3(event):
-            text.insert(3.0, f"Жанр: {zoom.combo3.get()}\n")
-            text.insert(4.0, csv_module.zom1(zoom.combo1.get(), zoom.combo2.get(), zoom.combo3.get()))
+            text.insert(4.0, f"Жанр: {zoom.combo3.get()}\n")
+            # text.insert(6.0, csv_module.son1(soon.combo1.get(), soon.combo2.get(), soon.combo3.get(), soon.combo4.get()))
+
         zoom.combo3.bind("<<ComboboxSelected>>", callbackFunc3)
 
+        # закрытие окна
         esc = tk.Button(zoom, text="Начальный экран", bg="black", fg="red",
                         command=lambda: [zoom.destroy(), StartWindow()])
-        esc.place(x=20, y=100, width=160, height=35)
+        esc.place(x=20, y=200, width=160, height=35)
 
 
 if __name__ == "__main__":
