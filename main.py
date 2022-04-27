@@ -3,6 +3,8 @@ from tkinter import ttk
 
 import csv_module
 from csv_module import Meta1
+from tkinter import END
+import re
 
 class StartWindow(tk.Tk):
 
@@ -20,9 +22,9 @@ class StartWindow(tk.Tk):
         #Поисковая сторка
         self.var3 = tk.StringVar()
         self.lbl = tk.Label(self, text="Поисковая строка", background='#856ff8', font=("Arial Bold", 15))
-        self.lbl.place(x=20, y=90)
+        self.lbl.place(x=20, y=60)
         self.txt = tk.Entry(width=30, textvariable=self.var3)
-        self.txt.place(x=20, y=117, width=650, height=30)
+        self.txt.place(x=20, y=90, width=650, height=30)
         self.txt.focus()
         self.label.pack(padx=20, pady=20)
 
@@ -41,6 +43,35 @@ class StartWindow(tk.Tk):
         # Кнопка перехода в пятое окно
         self.btn = tk.Button(self, text="Пользователь по user score", bg="black", fg="red", command=self.win5)
         self.btn.place(x=60, y=206, width=550, height=20)
+
+
+
+        my_list = Meta1['title']
+        l1 = tk.Listbox(self, width=107, height=3,
+                        bg='#856ff8', highlightcolor='#856ff8')
+        l1.place(x=21, y=120)
+
+        def my_down(my_widget):
+            l1.focus()
+            l1.selection_set(0)
+
+        def my_upd(my_widget):
+            my_w = my_widget.widget
+            index = int(my_w.curselection()[0])
+            value = my_w.get(index)
+            self.var3.set(value)
+            l1.delete(0, END)
+
+        def get_data(*args):
+            search_str = self.txt.get()
+            l1.delete(0, END)
+            for element in my_list:
+                if (re.match(search_str, element, re.IGNORECASE)):
+                    l1.insert(tk.END, element)
+
+        self.var3.trace('w', get_data)
+        l1.bind('<Return>', my_upd)
+        self.txt.bind('<Down>', my_down)
 
 
         #Вывод в поле
